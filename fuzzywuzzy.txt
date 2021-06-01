@@ -1,0 +1,81 @@
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
+print(fuzz.ratio("this is a test", "this is a test!"))
+
+
+
+example1 = ["he eats apple","did he eat apple"]
+example2 = ["apple he eats","he did eat appples and banana"]
+
+for i,j in zip(example1,example2) :
+    print('score : {} : {} = {}'.format(fuzz.ratio(i,j),i,j))
+
+example1 = ["he eats apple","did he eat apple"]
+example2 = ["apple he eats","he did eat appples and banana"]
+
+for i,j in zip(example1,example2) :
+    print('score : {} : {} = {}'.format(fuzz.token_sort_ratio(i,j),i,j))
+
+
+
+process.extract
+
+
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
+example1 = ["he eats apple","did he eat apple"]
+example2 = ["apple he eats","he did eat appples and banana"]
+
+process.extract("apples", example2,limit=1)
+
+
+example1 = ["he eats apple","did he eat apple"]
+example2 = ["apple he eats","he did eat appples and banana"]
+
+process.extract("apples", example1,scorer=fuzz.ratio)
+
+
+
+
+
+
+example1 = ["he eats apple","did he eat apple]
+example2 = ["apple he eats","he did eat appples and banana"]
+
+process.extract("apples", example1,scorer=fuzz.token_sort_ratio)
+
+
+def match_term(term, list_names, min_score=0):
+#-1 score incase we dont get any matches
+    max_score = -1
+#returning empty name for no match as well 
+    max_name = ""
+    for term2 in list_names:
+#finding fuzzy match score
+        score = fuzz.token_sort_ratio(term, term2)
+#checking if we are above our threshold & have a better score
+        if (score > min_score) & (score > max_score):
+            max_name = term2
+            max_score = score
+    return (max_name, max_score)
+
+for i in example1 :
+    print(i,match_term(i,example2,30))
+
+
+
+
+
+
+dic_list = []
+for name in example1
+    match = match_term(name, example2, 30)
+    dict_ = {}
+    dict_.update({"example" : name})
+    dict_.update({"match_name" : match[0]})
+    dict_.update({"score" : match[1]})
+    dict_list.append(dict_)
+dict_list
+
+
+
